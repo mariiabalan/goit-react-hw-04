@@ -1,5 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
+import { TbCameraSearch } from "react-icons/tb";
+import s from "./SearchBar.module.css";
 
 const SearchBar = ({ setQuery }) => {
   const initialValues = {
@@ -14,16 +16,23 @@ const SearchBar = ({ setQuery }) => {
     }
   };
   return (
-    <header>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form>
+    <header className={s.header}>
+      <Formik
+        className={s.formik}
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
+        <Form className={s.form}>
+          <button className={s.btn} type="submit">
+            <TbCameraSearch />
+          </button>
           <Field
+            className={s.field}
             name="query"
             type="text"
             autoComplete="off"
             placeholder="Search images and photos"
           ></Field>
-          <button type="submit">Search</button>
         </Form>
       </Formik>
     </header>

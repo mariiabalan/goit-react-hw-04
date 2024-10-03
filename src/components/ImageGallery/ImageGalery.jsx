@@ -1,14 +1,19 @@
+import { FcLikePlaceholder } from "react-icons/fc";
 import ImageCard from "../ImageCard/ImageCard";
+import s from "./ImageGalery.module.css";
+import { RiUserSharedFill } from "react-icons/ri";
 
-const ImageGalery = ({ photos }) => {
+const ImageGalery = ({ photos, onImageClick }) => {
   return (
-    <ul>
+    <ul className={s.gallery}>
       {photos.map((photo, index) => (
-        <li key={`${photo.id}-${index}`}>
-          <div>
+        <li className={s.image} key={`${photo.id}-${index}`}>
+          <div onClick={() => onImageClick(photo)}>
             <ImageCard photo={photo} />
-            <h2>{photo.user.name}</h2>
-            <p>Likes: {photo.likes}</p>
+            <div className={s.image_info}>
+              <RiUserSharedFill /> {photo.user.name} &nbsp;
+              <FcLikePlaceholder /> {photo.likes}
+            </div>
           </div>
         </li>
       ))}
