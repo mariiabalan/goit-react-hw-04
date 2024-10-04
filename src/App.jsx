@@ -61,11 +61,16 @@ const App = () => {
     setIsModalOpen(false);
     setSelectedImages(null);
   }, []);
+  const handleSearch = (newQuery) => {
+    setQuery(newQuery);
+    setPhotos([]);
+    setPage(1);
+  };
 
   return (
     <div>
       <Toaster />
-      <SearchBar setQuery={setQuery} />
+      <SearchBar onSearch={handleSearch} />
       {!!photos.length && (
         <ImageGalery photos={photos} onImageClick={openModal} />
       )}

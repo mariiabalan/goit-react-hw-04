@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { TbCameraSearch } from "react-icons/tb";
 import s from "./SearchBar.module.css";
 
-const SearchBar = ({ setQuery }) => {
+const SearchBar = ({ onSearch }) => {
   const initialValues = {
     query: "",
   };
@@ -12,7 +12,7 @@ const SearchBar = ({ setQuery }) => {
       toast.error("Please enter text to search for images.");
     } else {
       console.log(values);
-      setQuery(values.query);
+      onSearch(values.query);
     }
   };
   return (
